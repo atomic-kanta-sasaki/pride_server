@@ -1,7 +1,7 @@
 import { FirestoreConnection } from '../db/firebaseConnection';
-import { PrideContent, PrideContents } from '../domain/pride';
+import { PrideContent } from '../domain/pride';
 
-export class TaskDriver {
+export class PrideDriver {
   private dbConnection: FirestoreConnection;
 
 

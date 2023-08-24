@@ -1,41 +1,41 @@
-import { TaskUseCase } from '../usecase/task'
+import { PrideContentUseCase } from '../usecase/task'
 import { Task } from '../domain/task'
 
 export class TaskResource {
-  private taskUseCase: TaskUseCase
+  private prideContentUseCase: PrideContentUseCase
 
-  constructor(taskUseCase: TaskUseCase) {
-    this.taskUseCase = taskUseCase
+  constructor(taskUseCase: PrideContentUseCase) {
+    this.prideContentUseCase = taskUseCase
   }
 
   async findTask(req: any, res: any) {
     const id = req.params.id
-    const result = await this.taskUseCase.getById(id)
+    const result = await this.prideContentUseCase.getById(id)
 
     return this.serialize(result)
   }
 
-  async findAllTasks(req: any, res: any) {
-    const result = await this.taskUseCase.getList()
+  async findAllPrideContents(req: any, res: any) {
+    const result = await this.prideContentUseCase.getList()
     return result
   }
 
-  async createTask(req: any, res: any) {
+  async createPrideContent(req: any, res: any) {
     const { content } = req.body
-    const result = await this.taskUseCase.create(content)
+    const result = await this.prideContentUseCase.create(content)
     return result
   }
 
-  async updateTask(req: any, res: any) {
+  async updatePrideContent(req: any, res: any) {
     const id = req.params.id
     const { status } = req.body
-    const result = await this.taskUseCase.update(id, status)
+    const result = await this.prideContentUseCase.update(id, status)
     return result
   }
 
-  async deleteTask(req: any, res: any) {
+  async deletePrideContent(req: any, res: any) {
     const id = req.params.id
-    const result = await this.taskUseCase.delete(id)
+    const result = await this.prideContentUseCase.delete(id)
     return result
   }
 

@@ -1,5 +1,5 @@
-import { TaskPort } from '../port/taskPort'
-import { TaskDriver } from '../infrastructure/task'
+import { PridePort } from '../port/pridePort'
+import { PrideDriver } from '../infrastructure/prideDriver'
 import {
   Task,
   TaskContent,
@@ -24,11 +24,11 @@ import {
   PrideContentThumbsUsers
 } from '../domain/pride'
 
-export class TaskGateway implements TaskPort {
-  private taskDriver: TaskDriver
+export class PrideGateway implements PridePort {
+  private prideDriver: PrideDriver
 
-  constructor(taskDriver: TaskDriver) {
-    this.taskDriver = taskDriver
+  constructor(prideDriver: PrideDriver) {
+    this.prideDriver = prideDriver
   }
 
   private convertPrideList(result: any) {
@@ -58,7 +58,7 @@ export class TaskGateway implements TaskPort {
 
   async findAll(): Promise<PrideContent[]> {
     try {
-      const results = await this.taskDriver.readThisMonthPrideList()
+      const results = await this.prideDriver.readThisMonthPrideList()
 
       return results.map((result: PrideContent) => {
         // console.log(result)
@@ -81,7 +81,7 @@ export class TaskGateway implements TaskPort {
     return null
   }
 
-  async update(task: Task): Promise<null> {
+  async update(pride: PrideContent): Promise<null> {
     // try {
     //   const result = await this.taskDriver.update(task)
 

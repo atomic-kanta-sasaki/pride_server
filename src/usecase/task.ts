@@ -1,31 +1,31 @@
-import { TaskPort } from '../port/taskPort'
+import { PridePort } from '../port/pridePort'
 
-export class TaskUseCase {
-  private taskPort: TaskPort
+export class PrideContentUseCase {
+  private pridePort: PridePort
 
-  constructor(taskPort: TaskPort) {
-    this.taskPort = taskPort
+  constructor(pridePort: PridePort) {
+    this.pridePort = pridePort
   }
 
   getById(id: number) {
-    return this.taskPort.find(id)
+    return this.pridePort.find(id)
   }
 
   getList() {
-    return this.taskPort.findAll()
+    return this.pridePort.findAll()
   }
 
   create(content: string) {
-    return this.taskPort.create(content)
+    return this.pridePort.create(content)
   }
 
   async update(id: number, status: number) {
-    const task = await this.taskPort.find(id)
+    const task = await this.pridePort.find(id)
     const updateTask = task.updateStatus(status)
-    return this.taskPort.update(updateTask)
+    return this.pridePort.update(updateTask)
   }
 
   async delete(id: number) {
-    return this.taskPort.delete(id)
+    return this.pridePort.delete(id)
   }
 }
